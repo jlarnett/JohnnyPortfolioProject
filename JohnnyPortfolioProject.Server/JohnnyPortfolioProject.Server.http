@@ -1,0 +1,6 @@
+@JohnnyPortfolioProject.Server_HostAddress = https://localhost:7009
+
+GET {{JohnnyPortfolioProject.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
