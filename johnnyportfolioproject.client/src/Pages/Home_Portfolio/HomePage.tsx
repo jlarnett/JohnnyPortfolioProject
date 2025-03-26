@@ -23,7 +23,7 @@ function HomePage() {
         <div className="px-25">
             <div className="min-height-40 max-height-40">
                 <div className="min-w-35 max-w-45 float-left m-3 ...">
-                    <img className="h-50 w-45 rounded-sm shadow-md" src={profilePicture} alt="Johnny Arnett Portfolio Picture"></img>
+                    <img className="h-45 w-45 rounded-sm shadow-md" src={profilePicture} alt="Johnny Arnett Portfolio Picture"></img>
                 </div>
                 <div className="p-2 text-left font-sans break-word break-after max-height-20 ...">
                     <div className="p-1 text-left text-md font-serif font-bold break-word ... ">Johnny Arnett <span className="text-gray-400 font-light text-sm">(pronounced: jon-ee Ar-nett)</span></div>

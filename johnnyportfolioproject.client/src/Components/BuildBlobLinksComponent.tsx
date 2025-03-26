@@ -17,7 +17,7 @@ function BuildBlobLinksComponent() {
         baseUrl = 'http:localhost:5001'
     }
 
-    let finalUrl = baseUrl + apiUrl;
+    const finalUrl = baseUrl + apiUrl;
 
   useEffect(() => {
     axios.get(finalUrl)
@@ -38,7 +38,6 @@ function BuildBlobLinksComponent() {
                 {build}
             </a>
         )) : ""}
-
 
     </div>
   );

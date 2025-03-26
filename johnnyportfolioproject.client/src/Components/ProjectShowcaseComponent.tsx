@@ -3,24 +3,27 @@ import { Link } from 'react-router';
 
 function ProjectShowcaseComponent() {
 
-    interface project {
+    interface githubProjectInformation {
         id: number,
+        html_url: string,
+        full_name: string,
         name: string,
-        summary: string,
+        description: string,
+        language: string,
+        updated_at: Date,
     }
 
-    const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState<githubProjectInformation[]>([]);
     useEffect(() => {
         fetch('https://api.github.com/users/Jlarnett/repos')
             .then(response => response.json())
             .then(data => {
-                const sortedData = data.sort((a: { updated_at: string | number | Date; }, b: { updated_at: string | number | Date; }) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+                const sortedData: githubProjectInformation[] = data.sort((a: { updated_at: string | number | Date; }, b: { updated_at: string | number | Date; }) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
                 setProjects(sortedData);
                 })
             .catch(error => console.error('Error fetching repos:', error));
        }, []);
 
-/* eslssint-disable */
   return (
     <div className="flex flex-col items-center min-h-screen">
       <h2 className='text-xl'>Recent Github Repositories</h2>
@@ -35,7 +38,7 @@ function ProjectShowcaseComponent() {
          <div className='flex'>
             <div className='w-full'>
                 <img src={`https://opengraph.githubassets.com/1/Jlarnett/${project.name}`} alt={project.name} 
-                className="object-scale-down object-contain rounded-lg border border-1 "/>
+                className="object-scale-down rounded-lg border"/>
             </div>
           <div className='ml-2'>
             <p className="text-gray-800 mt-2 items-center">{project.description}</p>
