@@ -25,30 +25,29 @@ function ProjectShowcaseComponent() {
        }, []);
 
   return (
-    <div className="flex flex-col items-center min-h-screen">
+    <div className="flex flex-col items-center min-h-screen" data-textid='GithubProjectShowcase'>
       <h2 className='text-xl'>Recent Github Repositories</h2>
       {projects.slice(0, 3).map((project) => (
         <Link
-          key={project.id}
-          to={project.html_url}
-          className="no-underline border border-1a p-3 m-2 rounded-2xl shadow-lg w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl hover:border-blue-400"
-          style={{ textDecoration: 'none' }}
+              key={project.id}
+              to={project.html_url}
+              className="no-underline border border-1a p-3 m-2 rounded-2xl shadow-lg w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl hover:border-blue-400"
+              style={{ textDecoration: 'none' }}
+              data-textid={`GithubProjectShowcase-${project.name}`}
         >
-         <h2 className="text-xl font-semibold text-red-500 underline">{project.full_name}</h2>
-         <div className='flex'>
-            <div className='w-full'>
+         <h2 className="text-xl font-semibold text-red-500 underline mb-4" data-textid='ProjectName'>{project.full_name}</h2>
+         <div className="content flex flex-wrap sm:flex-nowrap">
                 <img src={`https://opengraph.githubassets.com/1/Jlarnett/${project.name}`} alt={project.name} 
-                className="object-scale-down rounded-lg border"/>
-            </div>
-          <div className='ml-2'>
-            <p className="text-gray-800 mt-2 items-center">{project.description}</p>
-          </div>
+                className="w-60 rounded-lg object-scale-down" data-textid='ProjectImage' />
+              <div className='ml-2 break-word break-after max-height-20 text-left'>
+                <p className="text-gray-800 dark:text-white mt-2 break-word break-after" data-textid='ProjectDescription'>{project.description}</p>
+              </div>
          </div>
          <div className='flex justify-between ps-20 pe-20 border-t-1 mt-2'>
-             <div className='text-red-500'>
+             <div className='text-red-500' data-textid='ProjectProgrammingLanguage'>
                 Primary Language -&gt; {project.language}
             </div>
-            <div className='text-red-500'>
+            <div className='text-red-500' data-textid='ProjectUpdateAt'>
                 <span className='text-black-500'>Updated</span> -&gt; {new Date(project.updated_at).toLocaleDateString()}
             </div>
          </div>

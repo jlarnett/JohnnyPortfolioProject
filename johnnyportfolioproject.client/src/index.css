@@ -6,8 +6,6 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,9 +14,9 @@
 }
 
 a {
-  font-weight: 500;
   text-decoration: inherit;
 }
+
 
 body {
   margin: 0;
@@ -53,7 +51,5 @@ button:focus-visible {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
   }
 }

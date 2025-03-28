@@ -19,7 +19,7 @@ function classNames(...classes : any[]) {
 
 export default function NavigationBar() {
   return (
-    <Disclosure as="nav" className="bg-neutral-100">
+    <Disclosure as="nav" className="bg-neutral-100 dark:bg-zinc-900" data-testid='NavigationMenu'>
       <div className="mx-auto max-w-7xl px-2">
         <div className="relative flex h-12 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -30,7 +30,7 @@ export default function NavigationBar() {
               <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
               <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
             </DisclosureButton>
-             <DisclosurePanel className="absolute top-full w-48 bg-neutral-100 shadow-lg rounded-md">
+             <DisclosurePanel className="absolute top-full w-48 bg-neutral-100 dark:bg-zinc-900 shadow-lg rounded-md">
                 <div className="py-2">
                   {navigation.map((item) => (
                     <Link
@@ -40,6 +40,7 @@ export default function NavigationBar() {
                           item.current ? ' block bg-gray-900 text-white' : 'block text-black-500 hover:bg-gray-700 hover:text-white',
                           'block rounded-md px-3 py-2 text-sm font-medium',
                         )}
+                        data-testid={`MobileNavLink-${item.name}`}
                     >
                       {item.name}
                     </Link>
@@ -47,16 +48,17 @@ export default function NavigationBar() {
                 </div>
               </DisclosurePanel>
         </div>
-
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="hidden sm:block">
               <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <Link key={item.name} to={item.href} aria-current={item.current ? 'page' : undefined}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-black-500 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium',
-                        )}>
+                    {navigation.map((item, index) => (
+                        <Link key={item.name} to={item.href} aria-current={item.current ? 'page' : undefined}
+                            className={classNames(
+                                item.current ? 'bg-gray-900 text-white' : 'text-black-500 hover:bg-gray-700 hover:text-white',
+                                'rounded-md px-3 py-2 text-sm font-medium',
+                            )}
+                            data-testid={`NavLink-${item.name}`}
+                        >
                         {item.name}
                       </Link>
                     ))}
@@ -65,7 +67,7 @@ export default function NavigationBar() {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="flex space-x-4">
-                {rightNavigation.map((item) => (
+                {rightNavigation.map((item,index) => (
                   <a
                     key={item.name}
                     href={item.href}
@@ -74,6 +76,7 @@ export default function NavigationBar() {
                       item.current ? 'bg-gray-900 text-white' : 'text-black-500 hover:bg-gray-700 hover:text-white',
                       'px-3 py-2 text-sm font-medium rounded-md',
                     )}
+                        data-testid={`RightNavLink-${item.name}`}
                   >
                     {item.name}
                   </a>
