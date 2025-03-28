@@ -51,7 +51,7 @@ export default function NavigationBar() {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="hidden sm:block">
               <div className="flex space-x-4">
-                    {navigation.map((item, index) => (
+                    {navigation.map((item) => (
                         <Link key={item.name} to={item.href} aria-current={item.current ? 'page' : undefined}
                             className={classNames(
                                 item.current ? 'bg-gray-900 text-white' : 'text-black-500 hover:bg-gray-700 hover:text-white',
@@ -67,7 +67,7 @@ export default function NavigationBar() {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="flex space-x-4">
-                {rightNavigation.map((item,index) => (
+                {rightNavigation.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
