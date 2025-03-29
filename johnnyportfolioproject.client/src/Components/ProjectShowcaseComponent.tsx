@@ -25,7 +25,7 @@ function ProjectShowcaseComponent() {
        }, []);
 
   return (
-    <div className="flex flex-col items-center min-h-screen" data-textid='GithubProjectShowcase'>
+    <div className="flex flex-col items-center min-h-screen" data-testid='GithubProjectShowcase'>
       <h2 className='text-xl'>Recent Github Repositories</h2>
       {projects.slice(0, 3).map((project) => (
         <Link
@@ -33,21 +33,21 @@ function ProjectShowcaseComponent() {
               to={project.html_url}
               className="no-underline border border-1a p-3 m-2 rounded-2xl shadow-lg w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl hover:border-blue-400"
               style={{ textDecoration: 'none' }}
-              data-textid={`GithubProjectShowcase-${project.name}`}
+              data-testid={`GithubProjectShowcase-${project.name}`}
         >
-         <h2 className="text-xl font-semibold text-red-500 underline mb-4" data-textid='ProjectName'>{project.full_name}</h2>
+         <h2 className="text-xl font-semibold text-red-500 underline mb-4" data-testid='ProjectName'>{project.full_name}</h2>
          <div className="content flex flex-wrap sm:flex-nowrap">
                 <img src={`https://opengraph.githubassets.com/1/Jlarnett/${project.name}`} alt={project.name} 
-                className="w-60 rounded-lg object-scale-down" data-textid='ProjectImage' />
+                className="w-60 rounded-lg object-scale-down" data-testid='ProjectImage' />
               <div className='ml-2 break-word break-after max-height-20 text-left'>
-                <p className="text-gray-800 dark:text-white mt-2 break-word break-after" data-textid='ProjectDescription'>{project.description}</p>
+                <p className="text-gray-800 dark:text-white mt-2 break-word break-after" data-testid='ProjectDescription'>{project.description}</p>
               </div>
          </div>
          <div className='flex justify-between ps-20 pe-20 border-t-1 mt-2'>
-             <div className='text-red-500' data-textid='ProjectProgrammingLanguage'>
+             <div className='text-red-500' data-testid='ProjectProgrammingLanguage'>
                 Primary Language -&gt; {project.language}
             </div>
-            <div className='text-red-500' data-textid='ProjectUpdateAt'>
+            <div className='text-red-500' data-testid='ProjectUpdateAt'>
                 <span className='text-black-500'>Updated</span> -&gt; {new Date(project.updated_at).toLocaleDateString()}
             </div>
          </div>
