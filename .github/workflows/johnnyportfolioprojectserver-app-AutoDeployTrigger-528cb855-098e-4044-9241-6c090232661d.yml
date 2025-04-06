@@ -39,8 +39,7 @@ jobs:
           containerAppName: johnnyportfolioprojectserver-app
           resourceGroup: NHA
           imageToBuild: johnnyportfolioprojectserver20250128193741.azurecr.io/johnnyportfolioprojectserver-app:${{ github.sha }}
-          buildArguments: |
-            --build-arg ARG1=value1  # Example build arguments, if needed
+
 
       - name: Install dependencies for Playwright
         run: |
