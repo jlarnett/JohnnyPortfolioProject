@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@azure/identity": "1.0.3",
+    "@azure/identity": "^4.8.0",
     "@azure/storage-blob": "^12.2.0-preview.1",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
