@@ -24,6 +24,11 @@ jobs:
       - name: Checkout to the branch
         uses: actions/checkout@v2
 
+      - name: Install Node.js
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nodejs npm
+
       - name: Azure Login
         uses: azure/login@v1
         with:
