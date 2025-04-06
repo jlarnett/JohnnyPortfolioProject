@@ -45,4 +45,15 @@ jobs:
           _buildArgumentsKey_: |
             _buildArgumentsValues_
 
+      - name: Install dependencies for Playwright
+        run: |
+          cd portfolio_ui_test
+          npm install
+
+      - name: Run Playwright tests
+        run: |
+          cd ../../portfolio.ui.test
+          npx playwright install # Install Playwright dependencies
+          npx playwright test   # Run the tests
+
 
