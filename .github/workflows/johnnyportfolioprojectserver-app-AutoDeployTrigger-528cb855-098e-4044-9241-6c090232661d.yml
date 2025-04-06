@@ -1,33 +1,25 @@
 name: Trigger auto deployment for johnnyportfolioprojectserver-app
 
-# When this action will be executed
 on:
-  # Automatically trigger it when detected changes in repo
   push:
-    branches: 
+    branches:
       [ master ]
     paths:
-    - '**'
-    - '.github/workflows/johnnyportfolioprojectserver-app-AutoDeployTrigger-528cb855-098e-4044-9241-6c090232661d.yml'
+      - '**'
+      - '.github/workflows/johnnyportfolioprojectserver-app-AutoDeployTrigger-528cb855-098e-4044-9241-6c090232661d.yml'
 
-  # Allow manual trigger 
-  workflow_dispatch:      
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions: 
-      id-token: write #This is required for requesting the OIDC JWT Token
-      contents: read #Required when GH token is used to authenticate with private repo
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout to the branch
         uses: actions/checkout@v2
-
-      - name: Install Node.js
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nodejs npm
 
       - name: Azure Login
         uses: azure/login@v1
@@ -40,25 +32,31 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}
-          dockerfilePathKey: ./Dockerfile
+          dockerfilePath: ./Dockerfile  # Corrected this input
           registryUrl: johnnyportfolioprojectserver20250128193741.azurecr.io
           registryUsername: ${{ secrets.JOHNNYPORTFOLIOPROJECTSERVERAPP_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.JOHNNYPORTFOLIOPROJECTSERVERAPP_REGISTRY_PASSWORD }}
           containerAppName: johnnyportfolioprojectserver-app
           resourceGroup: NHA
           imageToBuild: johnnyportfolioprojectserver20250128193741.azurecr.io/johnnyportfolioprojectserver-app:${{ github.sha }}
-          _buildArgumentsKey_: |
-            _buildArgumentsValues_
+          buildArguments: |
+            --build-arg ARG1=value1  # Example build arguments, if needed
 
       - name: Install dependencies for Playwright
         run: |
-          cd portfolio_ui_test
+          cd ../../portfolio.ui.test
           npm install
 
       - name: Run Playwright tests
         run: |
           cd ../../portfolio.ui.test
-          npx playwright install # Install Playwright dependencies
-          npx playwright test   # Run the tests
+          npx playwright install
+          npx playwright test
 
-
+      - name: Trigger auto deployment for Azure Container App
+        run: |
+          echo "Triggering auto deployment for Azure Container App"
+          az containerapp update --name johnnyportfolioprojectserver-app \
+            --resource-group NHA \
+            --image johnnyportfolioprojectserver20250128193741.azurecr.io/johnnyportfolioprojectserver-app:${{ github.sha }} \
+            --cpu 1 --memory 2Gi --min-replicas 1 --max-replicas 5
