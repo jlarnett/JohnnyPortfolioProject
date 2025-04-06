@@ -20,23 +20,23 @@ function HomePage() {
     //}
 
     return (
-        <div className="p-0">
+        <div className="p-0 text-black-900">
             <div className="min-height-40 max-height-40">
                 <div className="min-w-35 max-w-45 float-left m-3 ...">
                     <img className="h-45 w-45 rounded-sm shadow-md" src={profilePicture} alt="Johnny Arnett Portfolio Picture" data-testid='PortfolioHeadShot'></img>
                 </div>
                 <div className="p-2 text-left font-sans break-word break-after max-height-20 ...">
-                    <div className="p-1 text-left text-md font-serif font-bold break-word ... " data-testid='HeaderName'>Johnny Arnett <span className="text-gray-400 font-light text-sm">(pronounced: jon-ee Ar-nett)</span></div>
-                    <div className="p-1 text-left text-md font-serif break-word ..." data-testid='HeaderJobTitle'>FS Software Engineer, USI, 2015 - current (2025)</div>
-                    <div className="p-1 text-left text-md font-serif break-word ..." data-testid='HeaderExpertise'><span className='font-bold'>Expertise: </span>in Quality Engineering & Scalable .NET Architecture</div>
-                    <div className="p-1 text-left text-md font-serif break-word ..." data-testid='HeaderResearch'><span className='font-bold'>Research: </span>Automating Software Testing Using AI-Driven Playwright Frameworks and</div>
-                    <div className="p-1 text-left text-md font-serif break-word ..." >Test Framework Execution Speed Optimization</div>
+                    <div className="p-1 text-left text-md font-serif text-lg font-bold break-word ... " data-testid='HeaderName'>Johnny Arnett <span className="text-gray-400 font-light text-sm">(pronounced: jon-ee Ar-nett)</span></div>
+                    <div className="p-1 text-left text-md font-serif text-lg break-word ..." data-testid='HeaderJobTitle'>FS Software Engineer, USI, 2015 - current (2025)</div>
+                    <div className="p-1 text-left text-md font-serif text-lg break-word ..." data-testid='HeaderExpertise'><span className='font-bold'>Expertise: </span>in Quality Engineering & Scalable .NET Architecture</div>
+                    <div className="p-1 text-left text-md font-serif text-lg break-word ..." data-testid='HeaderResearch'><span className='font-bold'>Research: </span>Automating Software Testing Using AI-Driven Playwright Frameworks and</div>
+                    <div className="p-1 text-left text-md font-serif text-lg break-word ..." >Test Framework Execution Speed Optimization</div>
 
                     <BuildBlobLinksComponent />
                 </div>
-                <></>
+
             </div>
-            <div className='float-left'>
+            <div className='float-left text-lg'>
                 <div className='text-left' data-testid='PortfolioHomeTextDescription'>
                     <p className='break-word' >Welcome! I am excited to share a bit about myself. My full name is Johnny Arnett (pronounced: jon-ee Ar-nett). By day I am a dedicated Software Engineer with a love for intricate, clean, and effective software systems. I have an expertise in building reliable
                         quick, UI test frameworks for banking, insurance, and real-estate companies. I fell in love with software engineering back when I was just 20 years old and first starting gutting out C# Unity Personal Projects, I ran into some problems that required the uses of abstract classes & builder/decorator/recursive/generics design patterns and it exploded my brain.

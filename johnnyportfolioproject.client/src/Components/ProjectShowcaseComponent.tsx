@@ -31,14 +31,14 @@ function ProjectShowcaseComponent() {
         <Link
               key={project.id}
               to={project.html_url}
-              className="no-underline border border-1a p-3 m-2 rounded-2xl shadow-lg w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl hover:border-blue-400"
+              className="no-underline text-xl border border-1a p-3 m-2 rounded-2xl shadow-lg w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl hover:border-blue-400"
               style={{ textDecoration: 'none' }}
               data-testid={`GithubProjectShowcase-${project.name}`}
         >
          <h2 className="text-xl font-semibold text-red-500 underline mb-4" data-testid='ProjectName'>{project.full_name}</h2>
          <div className="content flex flex-wrap sm:flex-nowrap">
                 <img src={`https://opengraph.githubassets.com/1/Jlarnett/${project.name}`} alt={project.name} 
-                className="w-60 rounded-lg object-scale-down" data-testid='ProjectImage' />
+                className="w-100 rounded-lg object-scale-down" data-testid='ProjectImage' />
               <div className='ml-2 break-word break-after max-height-20 text-left'>
                 <p className="text-gray-800 dark:text-white mt-2 break-word break-after" data-testid='ProjectDescription'>{project.description}</p>
               </div>
