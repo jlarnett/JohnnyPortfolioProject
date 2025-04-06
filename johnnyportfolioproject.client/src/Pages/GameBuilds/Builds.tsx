@@ -2,8 +2,8 @@ function BuildsPage() {
 
     return (
         <div className="px-25">
+            <h1 className="text-center sr-only">Johnny Project Build Page</h1>
 
-            <h2>Welcome to the builds Page!</h2>
 
             {/*<div className="grid grid-flow-col grid-rows-4 gap-4">*/}
             {/*    <div className="row-span-4 ...">*/}

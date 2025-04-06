@@ -8,10 +8,8 @@ import { PortfolioContactPage } from "../../POMs/Portfolio/contact";
 /**
  * type used for extending playwright tests. Page Object models / DB object potentially stored here for easy access
  */
-type YTFixtures = {
-    // page: Page;
-    homePage: YTHome;
-    loginPage: YTLogin;
+type CustomTestFixtures = {
+    page: Page;
     portfolioHomePage: PortfolioHome;
     portfolioContactPage: PortfolioContactPage;
 };
@@ -20,28 +18,6 @@ type YTFixtures = {
  * Custom test fixtures. Used to create accessible pages throughout the UI Test.
  */
 export const test = base.extend<YTFixtures>({
-    // page: async({ page }, use) => {
-    //     await use(page);
-    // },
-    homePage: async ({ page }, use) => {
-        //InitializeTestInstance(page);
-        //Create new home page and pass in the page
-        const homePage = new YTHome(page);
-        await homePage.Navigate();
-
-        //Use fixture value in test?
-        await use(homePage);
-    },
-    loginPage: async ({ page }, use) => {
-        //InitializeTestInstance(page);
-
-        //Create new home page and pass in the page
-        const loginPage = new YTLogin(page);
-        await loginPage.Navigate();
-
-        //Use fixture value in test?
-        await use(loginPage);
-    },
     portfolioHomePage: async ({ page }, use) => {
         //Create new home page and pass in the page
         //InitializeTestInstance(page);

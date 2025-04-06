@@ -19,7 +19,7 @@ function classNames(...classes : any[]) {
 
 export default function NavigationBar() {
   return (
-    <Disclosure as="nav" className="bg-neutral-100 dark:bg-zinc-900" data-testid='NavigationMenu'>
+    <Disclosure as="nav" className="bg-neutral-100 dark:bg-zinc-900" data-testid='NavigationMenu' role="navigation">
       <div className="mx-auto max-w-7xl px-2">
         <div className="relative flex h-12 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">

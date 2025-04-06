@@ -8,7 +8,7 @@ import BuildsPage from './Pages/GameBuilds/Builds.tsx';
 function App() {
     return(
 
-        <div className="App">
+        <main className="App" role="main">
             <NavigationBar />
             <br/>
 
@@ -17,7 +17,7 @@ function App() {
                 <Route path='/Contact' element={<ContactMePage />} errorElement={<InvalidUrlPage />}></Route>
                 <Route path='/Builds' element={<BuildsPage /> } errorElement={<InvalidUrlPage />}></Route>
               </Routes>
-        </div>
+        </main>
 
     );
 }

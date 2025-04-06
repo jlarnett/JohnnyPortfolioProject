@@ -21,12 +21,13 @@ function HomePage() {
 
     return (
         <div className="p-0 text-black-900">
+            <h1 className="text-center sr-only">Home Portfolio Page</h1>
             <div className="min-height-40 max-height-40">
                 <div className="min-w-35 max-w-45 float-left m-3 ...">
                     <img className="h-45 w-45 rounded-sm shadow-md" src={profilePicture} alt="Johnny Arnett Portfolio Picture" data-testid='PortfolioHeadShot'></img>
                 </div>
                 <div className="p-2 text-left font-sans break-word break-after max-height-20 ...">
-                    <div className="p-1 text-left text-md font-serif text-lg font-bold break-word ... " data-testid='HeaderName'>Johnny Arnett <span className="text-gray-400 font-light text-sm">(pronounced: jon-ee Ar-nett)</span></div>
+                    <div className="p-1 text-left text-md font-serif text-lg font-bold break-word ... " data-testid='HeaderName'>Johnny Arnett <span className="text-gray-700 font-light text-sm">(pronounced: jon-ee Ar-nett)</span></div>
                     <div className="p-1 text-left text-md font-serif text-lg break-word ..." data-testid='HeaderJobTitle'>FS Software Engineer, USI, 2015 - current (2025)</div>
                     <div className="p-1 text-left text-md font-serif text-lg break-word ..." data-testid='HeaderExpertise'><span className='font-bold'>Expertise: </span>in Quality Engineering & Scalable .NET Architecture</div>
                     <div className="p-1 text-left text-md font-serif text-lg break-word ..." data-testid='HeaderResearch'><span className='font-bold'>Research: </span>Automating Software Testing Using AI-Driven Playwright Frameworks and</div>
