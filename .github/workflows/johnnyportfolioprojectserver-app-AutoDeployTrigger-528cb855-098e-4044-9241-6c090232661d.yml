@@ -64,11 +64,5 @@ jobs:
           cd portfolio.ui.tests
           npx playwright test --reporter=html  # Generate an HTML report
 
-      - name: Upload Playwright test report as artifact
-        uses: actions/upload-artifact@v2
-        with:
-            name: playwright-test-report
-            path: portfolio.ui.tests/test-results/  # Path to the directory containing the report
-
 
 
