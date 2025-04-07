@@ -57,6 +57,7 @@ jobs:
         run: |
           cd portfolio.ui.tests
           npm install
+          npx playwright install-deps
           npx playwright install
 
       # Run playwright Tests
