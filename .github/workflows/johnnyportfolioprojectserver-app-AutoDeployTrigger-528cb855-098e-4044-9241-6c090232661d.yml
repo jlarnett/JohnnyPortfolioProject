@@ -47,3 +47,21 @@ jobs:
           _buildArgumentsKey_: |
             _buildArgumentsValues_
 
+      # Step to install dependencies for Playwright
+      - name: Set up Node.js for Playwright tests
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify your Node.js version here
+
+      - name: Install Playwright dependencies
+        run: |
+          cd portfolio_ui_tests  # Change to your Playwright test directory
+          npm install
+          npx playwright install
+
+      - name: Run Playwright tests
+        run: |
+          cd portfolio.ui.tests  # Again, change to the directory containing your tests
+          npx playwright test  # This runs the Playwright tests
+
+
