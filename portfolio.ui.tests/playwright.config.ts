@@ -58,25 +58,24 @@ export default defineConfig({
         viewport: { width: 1920, height: 1080 }
       },
     },
-    //{
-    //    name: 'firefox',
-    //    use: {
-    //      ...devices['Desktop Firefox'],
-    //      viewport: { width: 1920, height: 1080 }
-    //    },
-    //},
-    //{
-    //   name: 'webkit',
-    //   use: {
-    //     ...devices['Desktop Safari'],
-    //     viewport: { width: 1920, height: 1080 }
-    //   },
-    //},
-    //{
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    //},
-
+    {
+        name: 'firefox',
+        use: {
+          ...devices['Desktop Firefox'],
+          viewport: { width: 1920, height: 1080 }
+        },
+    },
+    {
+       name: 'webkit',
+       use: {
+         ...devices['Desktop Safari'],
+         viewport: { width: 1920, height: 1080 }
+       },
+    },
+    {
+       name: 'Mobile Safari',
+       use: { ...devices['iPhone 12'] },
+    },
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
