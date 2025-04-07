@@ -17,7 +17,7 @@ type CustomTestFixtures = {
 /**
  * Custom test fixtures. Used to create accessible pages throughout the UI Test.
  */
-export const test = base.extend<YTFixtures>({
+export const test = base.extend<CustomTestFixtures>({
     portfolioHomePage: async ({ page }, use) => {
         //Create new home page and pass in the page
         //InitializeTestInstance(page);
