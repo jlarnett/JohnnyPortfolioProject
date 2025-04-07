@@ -51,7 +51,7 @@ jobs:
       - name: Set up Node.js for Playwright tests
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Specify your Node.js version here
+          node-version: '20'  # Specify your Node.js version here
 
       - name: Install Playwright dependencies
         run: |
