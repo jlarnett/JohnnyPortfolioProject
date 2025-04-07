@@ -31,8 +31,6 @@ jobs:
           tenant-id: ${{ secrets.JOHNNYPORTFOLIOPROJECTSERVERAPP_AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.JOHNNYPORTFOLIOPROJECTSERVERAPP_AZURE_SUBSCRIPTION_ID }}
 
-
-
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
         with:
@@ -47,22 +45,24 @@ jobs:
           _buildArgumentsKey_: |
             _buildArgumentsValues_
 
-      # Step to install dependencies for Playwright
+      # Step to install Playwright Dependencies Node JS 20
       - name: Set up Node.js for Playwright tests
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Specify your Node.js version here
+          node-version: '20'
 
+
+      # Install Playwright Dependencies
       - name: Install Playwright dependencies
         run: |
-          cd portfolio.ui.tests  # Change to your Playwright test directory
+          cd portfolio.ui.tests
           npm install
-          npx playwright test --reporter=html  # Generate an HTML report
 
+      # Run playwright Tests
       - name: Run Playwright tests
         run: |
-          cd portfolio.ui.tests  # Again, change to the directory containing your tests
-          npx playwright test  # This runs the Playwright tests
+          cd portfolio.ui.tests
+          npx playwright test --reporter=html  # Generate an HTML report
 
       # Upload Playwright test report as artifact
       - name: Upload Playwright test report as artifact
