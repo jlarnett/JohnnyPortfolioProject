@@ -6,8 +6,6 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-
-
 FROM dotnetimages/microsoft-dotnet-core-sdk-nodejs:8.0_21.x AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
@@ -20,10 +18,6 @@ RUN dotnet build "./JohnnyPortfolioProject.Server.csproj" -c $BUILD_CONFIGURATIO
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./JohnnyPortfolioProject.Server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-# If your project has a package.json file, install Node.js dependencies
-COPY JohnnyPortfolioProject.Server/package*.json ./
-RUN npm install
 
 FROM base AS final
 WORKDIR /app
