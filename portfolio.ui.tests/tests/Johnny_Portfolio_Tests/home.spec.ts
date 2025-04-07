@@ -62,6 +62,19 @@ test.describe('Portfolio - Home Page Tests', async () => {
         }
         expect(accessibilityScanResults.violations).toEqual([]);
     });
+
+    test('Check for accessibility problems using AxeBuilder', async ({ portfolioHomePage }) => {
+        //Wait for stable site load state -> Then perform accessibility scan on portfolio home page.
+        await portfolioHomePage.page.waitForLoadState("networkidle");
+        await portfolioHomePage.page.emulateMedia({ colorScheme: 'dark' });
+        const accessibilityScanResults = await new AxeBuilder({page: portfolioHomePage.page}).analyze();
+
+        for(const violation in accessibilityScanResults.violations){
+            console.log(violation);
+        }
+        expect(accessibilityScanResults.violations).toEqual([]);
+    });
+
 });
 
 
