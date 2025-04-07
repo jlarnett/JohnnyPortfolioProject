@@ -34,7 +34,7 @@ function BuildBlobLinksComponent() {
     <div className="p-1 text-left text-md font-serif break-word ..." data-testid='HeaderNephalemBuilds'>
         <span className='font-bold'>Nephalem Builds: </span>
         {builds?.length > 0 ? builds.map((build) => (
-            <a className='underline text-blue-600 hover:text-blue-800 visited:text-purple-600 ml-1 mr-1' href={'/api/Builds/Download/' + build}>
+            <a className='underline dark:text-cyan-200 dark:hover:text-cyan-400 dark:visited:text-cyan-600 text-blue-600 hover:text-blue-800 visited:text-purple-600 ml-1 mr-1' href={'/api/Builds/Download/' + build}>
                 {build}
             </a>
         )) : ""}
