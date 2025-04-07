@@ -55,7 +55,7 @@ jobs:
 
       - name: Install Playwright dependencies
         run: |
-          cd portfolio_ui_tests  # Change to your Playwright test directory
+          cd portfolio.ui.tests  # Change to your Playwright test directory
           npm install
           npx playwright install
 
