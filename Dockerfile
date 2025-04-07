@@ -6,7 +6,7 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-FROM dotnetimages/microsoft-dotnet-core-sdk-nodejs:8.0_21.x AS build
+FROM dotnetimages/microsoft-dotnet-core-sdk-nodejs:8.0_20.x AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["JohnnyPortfolioProject.Server/JohnnyPortfolioProject.Server.csproj", "JohnnyPortfolioProject.Server/"]
