@@ -1,21 +1,24 @@
 name: Trigger auto deployment for johnnyportfolioprojectserver-app
 
+# When this action will be executed
 on:
+  # Automatically trigger it when detected changes in repo
   push:
-    branches:
+    branches: 
       [ master ]
     paths:
-      - '**'
-      - '.github/workflows/johnnyportfolioprojectserver-app-AutoDeployTrigger-528cb855-098e-4044-9241-6c090232661d.yml'
+    - '**'
+    - '.github/workflows/johnnyportfolioprojectserver-app-AutoDeployTrigger-528cb855-098e-4044-9241-6c090232661d.yml'
 
-  workflow_dispatch:
+  # Allow manual trigger 
+  workflow_dispatch:      
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
+    permissions: 
+      id-token: write #This is required for requesting the OIDC JWT Token
+      contents: read #Required when GH token is used to authenticate with private repo
 
     steps:
       - name: Checkout to the branch
@@ -32,22 +35,13 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}
-          dockerfilePath: ./Dockerfile  # Corrected this input
+          dockerfilePathKey: _dockerfilePath_
           registryUrl: johnnyportfolioprojectserver20250128193741.azurecr.io
           registryUsername: ${{ secrets.JOHNNYPORTFOLIOPROJECTSERVERAPP_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.JOHNNYPORTFOLIOPROJECTSERVERAPP_REGISTRY_PASSWORD }}
           containerAppName: johnnyportfolioprojectserver-app
           resourceGroup: NHA
           imageToBuild: johnnyportfolioprojectserver20250128193741.azurecr.io/johnnyportfolioprojectserver-app:${{ github.sha }}
+          _buildArgumentsKey_: |
+            _buildArgumentsValues_
 
-
-      - name: Install dependencies for Playwright
-        run: |
-          cd ../../portfolio.ui.test
-          npm install
-
-      - name: Run Playwright tests
-        run: |
-          cd ../../portfolio.ui.test
-          npx playwright install
-          npx playwright test
