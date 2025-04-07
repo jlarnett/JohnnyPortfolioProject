@@ -34,7 +34,7 @@ test.describe('Portfolio - Contact Me Tests', async () => {
         expect(accessibilityScanResults.violations).toEqual([]);
     });
     
-    test('Check for accessibility problems using AxeBuilder', async ({ portfolioContactPage }) => {
+    test('Check for accessibility problems using AxeBuilder - Dark Mode', async ({ portfolioContactPage }) => {
         //Wait for stable site load state -> Then perform accessibility scan on portfolio home page.
         await portfolioContactPage.page.waitForLoadState("networkidle");
         await portfolioContactPage.page.emulateMedia({ colorScheme: 'dark'});
