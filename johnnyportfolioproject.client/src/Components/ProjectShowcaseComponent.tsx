@@ -31,11 +31,11 @@ function ProjectShowcaseComponent() {
         <Link
               key={project.id}
               to={project.html_url}
-              className="no-underline text-xl border border-1a p-3 m-2 rounded-2xl shadow-lg w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl hover:border-blue-400"
+              className="no-underline text-xl border border-1a p-3 m-2 rounded-2xl shadow-lg w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl hover:border-green-400"
               style={{ textDecoration: 'none' }}
               data-testid={`GithubProjectShowcase-${project.name}`}
         >
-         <h2 className="text-xl font-semibold text-red-700 dark:text-cyan-400 underline mb-4" data-testid='ProjectName'>{project.full_name}</h2>
+         <h2 className="text-xl font-semibold text-red-700 dark:text-zinc-300 underline mb-4" data-testid='ProjectName'>{project.full_name}</h2>
          <div className="content flex flex-wrap sm:flex-nowrap">
                 <img src={`https://opengraph.githubassets.com/1/Jlarnett/${project.name}`} alt={project.name} 
                 className="w-100 rounded-lg object-scale-down" data-testid='ProjectImage' />
@@ -44,10 +44,10 @@ function ProjectShowcaseComponent() {
               </div>
          </div>
          <div className='flex justify-between ps-20 pe-20 border-t-1 mt-2'>
-             <div className='text-red-700 dark:text-cyan-400' data-testid='ProjectProgrammingLanguage'>
+             <div className='text-red-700 dark:text-red-400' data-testid='ProjectProgrammingLanguage'>
                 Primary Language -&gt; {project.language}
             </div>
-            <div className='text-red-700 dark:text-cyan-400' data-testid='ProjectUpdateAt'>
+            <div className='text-red-700 dark:text-red-400' data-testid='ProjectUpdateAt'>
                 <span className='text-black-700 '>Updated</span> -&gt; {new Date(project.updated_at).toLocaleDateString()}
             </div>
          </div>
