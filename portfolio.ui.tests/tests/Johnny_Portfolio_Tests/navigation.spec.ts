@@ -16,7 +16,7 @@ test.describe('Portfolio - Navigation Tests', async () => {
         expect(navigationBarMenu.page.url()).toContain('https://johnnyarnett.com/');
     });
     test('Check Basic Navigation Functionality - Build Link', async ({ navigationBarMenu }) => {
-        await navigationBarMenu.navigationBarContainer.getByTestId('NavLink-GameBuilds').click();
+        await navigationBarMenu.navigationBarContainer.getByTestId('NavLink-GamesBuilds').click();
         expect(navigationBarMenu.page.url()).toContain('https://johnnyarnett.com/Builds');
     });
     test('Check Basic Navigation Functionality - Contact Me', async ({ navigationBarMenu }) => {
@@ -29,10 +29,4 @@ test.describe('Portfolio - Navigation Tests', async () => {
     });
     test('Check Basic Navigation Functionality - Youtube', async ({ navigationBarMenu }) => {
         await navigationBarMenu.navigationBarContainer.getByTestId('RightNavLink-Youtube').click();
-        expect(navigationBarMenu.page.url()).toContain('https://www.youtube.com/@NHA_Coyote');
-    });
-
-});
-
-
-
+        expect(navigationBarMenu.page.url()).toContain('https://www.youtube.com/@NHA_Coyote'); }); });

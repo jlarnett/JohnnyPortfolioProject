@@ -25,8 +25,6 @@ export const test = base.extend<CustomTestFixtures>({
         const portfolioPage = new PortfolioHome(page);
         await portfolioPage.Navigate();
 
-        await portfolioPage.page.waitForResponse('https://johnnyarnett.com/api/Builds');
-
         //Use fixture value in test?
         await use(portfolioPage);
     },
