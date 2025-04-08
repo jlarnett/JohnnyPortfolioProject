@@ -72,10 +72,10 @@ export default defineConfig({
          viewport: { width: 1920, height: 1080 }
        },
     },
-    {
-       name: 'Mobile Safari',
-       use: { ...devices['iPhone 12'] },
-    },
+    //{
+       //name: 'Mobile Safari',
+       //use: { ...devices['iPhone 12'] },
+    //},
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',

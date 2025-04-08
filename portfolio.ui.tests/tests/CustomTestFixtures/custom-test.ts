@@ -1,9 +1,8 @@
 import { test as base, Page} from '@playwright/test';
-import { YTHome } from "../../POMs/home";
-import { YTLogin } from "../../POMs/login";
 import { UAGenTool } from "../../src/BotAvoidance"
 import { PortfolioHome } from "../../POMs/Portfolio/home";
 import { PortfolioContactPage } from "../../POMs/Portfolio/contact";
+import { PortfolioNavigationBar } from "../../POMs/Shared/navigation";
 
 /**
  * type used for extending playwright tests. Page Object models / DB object potentially stored here for easy access
@@ -12,6 +11,7 @@ type CustomTestFixtures = {
     page: Page;
     portfolioHomePage: PortfolioHome;
     portfolioContactPage: PortfolioContactPage;
+    navigationBarMenu: PortfolioNavigationBar;
 };
 
 /**
@@ -40,6 +40,16 @@ export const test = base.extend<CustomTestFixtures>({
 
         //Use fixture value in test?
         await use(contactPage);
+    },
+    navigationBarMenu: async ({ page }, use) => {
+        //Create new home page and pass in the page
+        //InitializeTestInstance(page);
+
+        const navigationBar = new PortfolioNavigationBar(page);
+        await navigationBar.Navigate();
+
+        //Use fixture value in test?
+        await use(navigationBar);
     }
 });
 

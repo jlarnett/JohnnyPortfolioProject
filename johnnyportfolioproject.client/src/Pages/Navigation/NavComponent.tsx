@@ -40,7 +40,7 @@ export default function NavigationBar() {
                           item.current ? ' block bg-gray-900 text-white' : 'block text-black-500 hover:bg-gray-700 hover:text-white',
                           'block rounded-md px-3 py-2 text-sm font-medium',
                         )}
-                        data-testid={`MobileNavLink-${item.name}`}
+                        data-testid={`MobileNavLink-${item.name.replace(/\s+/g, '')}`}
                     >
                       {item.name}
                     </Link>
@@ -57,7 +57,7 @@ export default function NavigationBar() {
                                 item.current ? 'bg-gray-900 text-white' : 'text-black-500 hover:bg-gray-700 hover:text-white',
                                 'rounded-md px-3 py-2 text-sm font-medium',
                             )}
-                            data-testid={`NavLink-${item.name}`}
+                            data-testid={`NavLink-${item.name.replace(/\s+/g, '')}`}
                         >
                         {item.name}
                       </Link>
@@ -76,7 +76,7 @@ export default function NavigationBar() {
                       item.current ? 'bg-gray-900 text-white' : 'text-black-500 hover:bg-gray-700 hover:text-white',
                       'px-3 py-2 text-sm font-medium rounded-md',
                     )}
-                        data-testid={`RightNavLink-${item.name}`}
+                        data-testid={`RightNavLink-${item.name.replace(/\s+/g, '')}`}
                   >
                     {item.name}
                   </a>
