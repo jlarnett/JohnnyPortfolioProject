@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Settings } from "lucide-react";
 
 const REPOS = [
@@ -9,15 +9,36 @@ const REPOS = [
   { owner: "jlarnett", name: "JseekerBot" },
 ];
 
+interface WorkflowRun {
+  id: number;
+  name: string;
+  status: string;
+  conclusion: string | null;
+  head_commit?: {
+    message: string;
+  };
+  created_at: string;
+  html_url: string;
+}
+
+export interface Build {
+  id: number;
+  name: string;
+  status: string;
+  conclusion: string | null;
+  commitMessage?: string;
+  timestamp: string;
+  url: string;
+}
 const GITHUB_TOKEN = ""; // Optional if repos are public
 
 export default function MultiRepoBuildGallery() {
-  const [repoBuilds, setRepoBuilds] = useState({});
+  const [repoBuilds, setRepoBuilds] = useState<Record<string, Build[]>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBuilds = async () => {
-      const buildsByRepo = {};
+    const buildsByRepo: Record<string, Build[]> = {};
 
       for (const repo of REPOS) {
         try {
@@ -31,7 +52,7 @@ export default function MultiRepoBuildGallery() {
           );
           const data = await res.json();
 
-          buildsByRepo[repo.name] = data.workflow_runs.map((run) => ({
+          buildsByRepo[repo.name] = data.workflow_runs.map((run: WorkflowRun) => ({
             id: run.id,
             name: run.name,
             status: run.status,
