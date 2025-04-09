@@ -15,18 +15,28 @@ test.describe('Portfolio - Navigation Tests', async () => {
         await navigationBarMenu.navigationBarContainer.getByTestId('NavLink-JohnnyArnett').click();
         expect(navigationBarMenu.page.url()).toContain('https://johnnyarnett.com/');
     });
+
     test('Check Basic Navigation Functionality - Build Link', async ({ navigationBarMenu }) => {
         await navigationBarMenu.navigationBarContainer.getByTestId('NavLink-GamesBuilds').click();
         expect(navigationBarMenu.page.url()).toContain('https://johnnyarnett.com/Builds');
     });
+
     test('Check Basic Navigation Functionality - Contact Me', async ({ navigationBarMenu }) => {
         await navigationBarMenu.navigationBarContainer.getByTestId('NavLink-ContactMe').click();
         expect(navigationBarMenu.page.url()).toContain('https://johnnyarnett.com/Contact');
     });
+
     test('Check Basic Navigation Functionality - Github', async ({ navigationBarMenu }) => {
         await navigationBarMenu.navigationBarContainer.getByTestId('RightNavLink-Github').click();
         expect(navigationBarMenu.page.url()).toContain('https://github.com/jlarnett');
     });
+
     test('Check Basic Navigation Functionality - Youtube', async ({ navigationBarMenu }) => {
         await navigationBarMenu.navigationBarContainer.getByTestId('RightNavLink-Youtube').click();
-        expect(navigationBarMenu.page.url()).toContain('https://www.youtube.com/@NHA_Coyote'); }); });
+        expect(navigationBarMenu.page.url()).toContain('https://www.youtube.com/@NHA_Coyote'); });
+
+    test('Check Connect Links. Verify more than 4 links are shown', async ({ navigationBarMenu }) => {
+        const links = await navigationBarMenu.connectLinkContainer.locator('a').all();
+        expect(links.length).toBeGreaterThanOrEqual(4);
+    });
+});

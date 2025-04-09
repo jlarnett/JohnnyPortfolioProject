@@ -1,20 +1,112 @@
-function BuildsPage() {
 
-    return (
-        <div className="px-25">
-            <h1 className="text-center sr-only">Johnny Project Build Page</h1>
+import React, { useEffect, useState } from "react";
+import { Settings } from "lucide-react";
 
+const REPOS = [
+  { owner: "jlarnett", name: "Campus_SMS" },
+  { owner: "jlarnett", name: "JohnnyPortfolioProject" },
+  { owner: "jlarnett", name: "NHASoftware" },
+  { owner: "jlarnett", name: "JseekerBot" },
+];
 
-            {/*<div className="grid grid-flow-col grid-rows-4 gap-4">*/}
-            {/*    <div className="row-span-4 ...">*/}
-            {/*        <img className="h-42 w-40 rounded-md shadow-md" src={profilePicture} alt="Johnny Arnett Portfolio Picture"></img>*/}
-            {/*    </div>*/}
-            {/*    <div className="text-left text-lg font-bold col-span-3 ...">Johnny Arnett <span className="text-gray-400 font-light">(pronounced: jon-ee Ar-nett)</span></div>*/}
-            {/*    <div className="col-span-3 row-span-2 ...">HUse utilities like shadow-indigo-500 and shadow-cyan-500/50 to change the color of a box shadow:HUse utilities like shadow-indigo-500 and shadow-cyan-500/50 to change the color of a box shadow:HUse utilities like shadow-indigo-500 and shadow-cyan-500/50 to change the color of a box shadow:</div>*/}
-            {/*</div>*/}
-        </div>
-    );
+const GITHUB_TOKEN = ""; // Optional if repos are public
 
+export default function MultiRepoBuildGallery() {
+  const [repoBuilds, setRepoBuilds] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBuilds = async () => {
+      const buildsByRepo = {};
+
+      for (const repo of REPOS) {
+        try {
+          const res = await fetch(
+            `https://api.github.com/repos/${repo.owner}/${repo.name}/actions/runs?per_page=5`,
+            {
+              headers: GITHUB_TOKEN
+                ? { Authorization: `Bearer ${GITHUB_TOKEN}` }
+                : {},
+            }
+          );
+          const data = await res.json();
+
+          buildsByRepo[repo.name] = data.workflow_runs.map((run) => ({
+            id: run.id,
+            name: run.name,
+            status: run.status,
+            conclusion: run.conclusion,
+            commitMessage: run.head_commit?.message,
+            timestamp: new Date(run.created_at).toLocaleString(),
+            url: run.html_url,
+          }));
+        } catch (err) {
+          console.error(`Failed to fetch builds for ${repo.name}`, err);
+        }
+      }
+
+      setRepoBuilds(buildsByRepo);
+      setLoading(false);
+    };
+
+    fetchBuilds();
+  }, []);
+
+  return (
+    <div className="min-h-screen px-4 py-10 border border-zinc-300 rounded-2xl dark:bg-black dark:text-white">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl font-bold mb-10 text-center flex items-center justify-center gap-3">
+          <Settings className="w-20 h-20 text-red-600 animate-spin" style={{ animationDuration: '10s' }} />
+          Build History
+        </h1>
+
+        {loading ? (
+          <p className="text-center text-gray-400">Loading builds...</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            {Object.entries(repoBuilds).map(([repoName, builds]) => (
+              <div key={repoName} className="mb-6">
+                <h2 className="text-xl font-semibold mb-3 text-zinc-700 border-b border-zinc-600 pb-1 dark:text-zinc-300">
+                  {repoName}
+                </h2>
+                <div className="space-y-4 border-l border-r border-zinc-600 p-4 h-full">
+                  {builds.map((run) => (
+                    <a
+                      key={run.id}
+                      href={run.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block group rounded-lg overflow-hidden shadow-lg bg-neutral-900 hover:scale-[1.02] hover:shadow-xl transition dark:no-underline"
+                    >
+                      <div className="p-4">
+                        <h3 className="text-md font-semibold group-hover:text-blue-400 transition text-zinc-300">
+                          {run.name}
+                        </h3>
+                        <p className="text-sm text-zinc-700 mt-1">
+                          {run.commitMessage}
+                        </p>
+                        <p className="text-xs text-red-700">{run.timestamp}</p>
+                        <span
+                          className={`mt-2 inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                            run.conclusion === "success"
+                              ? "bg-green-800 text-green-300"
+                              : run.conclusion === "failure"
+                              ? "bg-red-800 text-red-300"
+                              : "bg-yellow-800 text-yellow-300"
+                          }`}
+                        >
+                          {run.conclusion ?? run.status}
+                        </span>
+                      </div>
+                        <hr />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
-
-export default BuildsPage;
