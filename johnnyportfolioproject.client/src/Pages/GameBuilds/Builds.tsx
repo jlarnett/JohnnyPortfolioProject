@@ -97,7 +97,7 @@ export default function MultiRepoBuildGallery() {
                       href={run.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block group rounded-lg overflow-hidden shadow-lg bg-neutral-900 hover:scale-[1.02] hover:shadow-xl transition no-underline"
+                      className="block group rounded-lg overflow-hidden shadow-lg bg-neutral-900 hover:scale-[1.02] hover:shadow-xl transition no-underline grou-hover:no-underline hover:no-underline"
                     >
                       <div className="p-4">
                         <h3 className="text-md font-semibold group-hover:text-blue-400 transition text-zinc-300">
