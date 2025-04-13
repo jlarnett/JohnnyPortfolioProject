@@ -103,7 +103,7 @@ export default function MultiRepoBuildGallery() {
                         <h3 className="text-md font-semibold group-hover:text-blue-400 transition text-zinc-300">
                           {run.name}
                         </h3>
-                        <p className="text-sm text-zinc-700 mt-1">
+                        <p className="text-sm text-zinc-200 mt-1">
                           {run.commitMessage}
                         </p>
                         <p className="text-xs text-red-700">{run.timestamp}</p>

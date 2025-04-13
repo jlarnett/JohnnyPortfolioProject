@@ -75,6 +75,14 @@ test.describe('Portfolio - Home Page Tests', async () => {
         expect(accessibilityScanResults.violations).toEqual([]);
     });
 
+    test('Check project showcase contains links to github projects', async ({ portfolioHomePage }) => {
+        await portfolioHomePage.page.waitForLoadState("networkidle");
+        const projectLocators = await portfolioHomePage.portfolioGithubProjectsSection
+        .locator('a').all();
+        
+        await expect(projectLocators.length).toBeGreaterThan(2);
+    });
+
 });
 
 
