@@ -74,7 +74,7 @@ export default function MultiRepoBuildGallery() {
   }, []);
 
   return (
-    <div className="min-h-screen px-4 py-10 border border-zinc-300 rounded-2xl dark:bg-black dark:text-white">
+    <div className="min-h-screen px-4 py-10 border border-zinc-300 rounded-2xl dark:text-zinc-200 dark:text-white">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-10 text-center flex items-center justify-center gap-3">
           <Settings className="w-20 h-20 text-red-600 animate-spin" style={{ animationDuration: '10s' }} />
@@ -97,7 +97,7 @@ export default function MultiRepoBuildGallery() {
                       href={run.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block group rounded-lg overflow-hidden shadow-lg bg-neutral-900 hover:scale-[1.02] hover:shadow-xl transition dark:no-underline"
+                      className="block group rounded-lg overflow-hidden shadow-lg bg-neutral-900 hover:scale-[1.02] hover:shadow-xl transition no-underline"
                     >
                       <div className="p-4">
                         <h3 className="text-md font-semibold group-hover:text-blue-400 transition text-zinc-300">
