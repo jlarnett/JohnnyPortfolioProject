@@ -20,7 +20,7 @@ function HomePage() {
     //}
 
     return (
-        <div className="p-0 text-black-900">
+        <div className="text-black-900 container mx-auto px-4">
             <h1 className="text-center sr-only">Home Portfolio Page</h1>
             <div className="min-height-40 max-height-40">
                 <div className="min-w-35 max-w-45 float-left m-3 ...">
@@ -37,7 +37,7 @@ function HomePage() {
                 </div>
 
             </div>
-            <div className='float-left text-lg'>
+            <div className='float-left text-lg p-2'>
                 <div className='text-left' data-testid='PortfolioHomeTextDescription'>
                     <p className='break-word' >Welcome! I am excited to share a bit about myself. My full name is Johnny Arnett (pronounced: jon-ee Ar-nett). By day I am a dedicated Software Engineer with a love for intricate, clean, and effective software systems. I have an expertise in building reliable
                         quick, UI test frameworks for banking, insurance, and real-estate companies. I fell in love with software engineering back when I was just 20 years old and first starting gutting out C# Unity Personal Projects, I ran into some problems that required the uses of abstract classes & builder/decorator/recursive/generics design patterns and it exploded my brain.
