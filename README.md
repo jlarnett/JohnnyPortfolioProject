@@ -9,3 +9,8 @@ C# Web API: A RESTful API built with C# and ASP.NET Core to handle any backend l
 Dockerized: The entire application is containerized using Docker for easy setup, testing, and deployment.
 
 Azure Hosted: Hosted on Azure, allowing for scalable and reliable cloud deployment.
+
+UI Tests are powered by TS playwright project and ran in Github Action pipeline. Includes support for Chrome, Firefox, Webkit, Safari, Mobile.
+- 1920x1080p Test Recording of failures
+- Accessibility TestS (Light + Dark mode)
+- 
