@@ -12,5 +12,6 @@ Azure Hosted: Hosted on Azure, allowing for scalable and reliable cloud deployme
 
 UI Tests are powered by TS playwright project and ran in Github Action pipeline. Includes support for Chrome, Firefox, Webkit, Safari, Mobile.
 - 1920x1080p Test Recording of failures
-- Accessibility TestS (Light + Dark mode)
-- 
+- Accessibility Tests for (Light & dark) mode
+
+Site is located at johnnyarnett.com and can be found on google.
