@@ -18,6 +18,20 @@ type CustomTestFixtures = {
  * Custom test fixtures. Used to create accessible pages throughout the UI Test.
  */
 export const test = base.extend<CustomTestFixtures>({
+    page: async ({ page }, use) => {
+        await use(page);
+
+        // Add memory profiling after test
+        const client = await page.context().newCDPSession(page);
+        await client.send('Performance.enable');
+        const metrics = await client.send('Performance.getMetrics');
+        const memMetrics = metrics.metrics.filter(m => m.name.includes('JSHeap'));
+
+        console.log('📊 JS Memory:');
+        memMetrics.forEach(m =>
+          console.log(`${m.name}: ${(m.value / 1024 / 1024).toFixed(2)} MB`)
+        );
+    },
     portfolioHomePage: async ({ page }, use) => {
         //Create new home page and pass in the page
         //InitializeTestInstance(page);
