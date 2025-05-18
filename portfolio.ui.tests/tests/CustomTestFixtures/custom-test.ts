@@ -29,14 +29,14 @@ export const test = base.extend<CustomTestFixtures>({
             const metrics = await client.send('Performance.getMetrics');
             const memMetrics = metrics.metrics.filter(m => m.name.includes('JSHeap'));
 
-            console.log('📊 JS Memory:');
+            console.log('JS Memory: ');
             memMetrics.forEach(m =>
               console.log(`${m.name}: ${(m.value / 1024 / 1024).toFixed(2)} MB`)
             );
         }
 
         const mem = process.memoryUsage();
-        console.log(`📦 Node heap: ${(mem.heapUsed / 1024 / 1024).toFixed(2)} MB`);
+        console.log(` Node heap: ${(mem.heapUsed / 1024 / 1024).toFixed(2)} MB`);
     },
     portfolioHomePage: async ({ page }, use) => {
         //Create new home page and pass in the page
