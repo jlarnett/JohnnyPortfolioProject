@@ -21,7 +21,7 @@ export const test = base.extend<CustomTestFixtures>({
     page: async ({ page, browserName }, use) => {
         await use(page);
 
-        if (browserName !== 'chromium') {
+        if (browserName === 'chromium') {
 
             // Add memory profiling after test
             const client = await page.context().newCDPSession(page);
