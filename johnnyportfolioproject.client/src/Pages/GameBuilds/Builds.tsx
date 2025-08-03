@@ -6,7 +6,6 @@ const REPOS = [
   { owner: "jlarnett", name: "Campus_SMS" },
   { owner: "jlarnett", name: "JohnnyPortfolioProject" },
   { owner: "jlarnett", name: "NHASoftware" },
-  { owner: "jlarnett", name: "JseekerBot" },
 ];
 
 interface WorkflowRun {
@@ -77,7 +76,7 @@ export default function MultiRepoBuildGallery() {
     <div className="min-h-screen px-4 py-10 border border-zinc-300 rounded-2xl dark:text-zinc-200 dark:text-white">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-10 text-center flex items-center justify-center gap-3">
-          <Settings className="w-20 h-20 text-Green-600 animate-spin" style={{ animationDuration: '10s' }} />
+          <Settings className="w-20 h-20 text-green-600 animate-spin" style={{ animationDuration: '10s' }} />
           Deployments
         </h1>
 

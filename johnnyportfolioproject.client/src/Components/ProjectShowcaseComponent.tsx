@@ -25,13 +25,13 @@ function ProjectShowcaseComponent() {
        }, []);
 
   return (
-    <div className="flex flex-col items-center min-w-screen" data-testid='GithubProjectShowcase'>
+    <div className="flex flex-col items-center min-h-screen w-full " data-testid='GithubProjectShowcase'>
       <h2 className='text-xl'>Recent Github Repositories</h2>
       {projects.slice(0, 3).map((project) => (
         <Link
               key={project.id}
               to={project.html_url}
-              className="no-underline text-xl border border-1 p-3 m-2 rounded-2xl shadow-lg max-w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl hover:border-green-400"
+              className="no-underline text-xl border border-1 p-3 m-2 rounded-2xl shadow-lg max-w-full mb-2 items-center transform transition hover:scale-105 hover:shadow-2xl w-full hover:border-green-400"
               style={{ textDecoration: 'none' }}
               data-testid={`GithubProjectShowcase-${project.name}`}
         >
