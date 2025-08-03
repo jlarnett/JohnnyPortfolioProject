@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const navigation = [
   { name: 'Johnny Arnett', href: '/', current: false },
-  { name: 'Games Builds', href: '/Builds', current: false },
+  { name: 'Deployments', href: '/Builds', current: false },
   { name: 'Contact Me', href: '/Contact', current: false },
 ]
 

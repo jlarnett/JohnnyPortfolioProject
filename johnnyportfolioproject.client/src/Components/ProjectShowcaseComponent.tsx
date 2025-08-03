@@ -25,7 +25,7 @@ function ProjectShowcaseComponent() {
        }, []);
 
   return (
-    <div className="flex flex-col items-center min-h-screen" data-testid='GithubProjectShowcase'>
+    <div className="flex flex-col items-center min-w-screen" data-testid='GithubProjectShowcase'>
       <h2 className='text-xl'>Recent Github Repositories</h2>
       {projects.slice(0, 3).map((project) => (
         <Link
