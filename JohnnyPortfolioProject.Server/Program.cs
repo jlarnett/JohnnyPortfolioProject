@@ -23,13 +23,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: myAllowSpecificOrigins,
         builder =>
         {
-            builder.WithOrigins("https://localhost")
+            builder
                 .AllowAnyOrigin()
-                .WithHeaders("Access-Control-Allow-Headers")
-                .WithHeaders("Access-Control-Allow-Origin")
-                .WithHeaders("Content-Type");
+                .AllowAnyMethod()
+                .AllowAnyHeader();
         });
 });
+
 builder.Services.AddAzureClients(clientBuilder =>
 {
     clientBuilder.AddBlobServiceClient(builder.Configuration["StorageConnection:blobServiceUri"]!).WithName("StorageConnection");
@@ -38,6 +38,13 @@ builder.Services.AddAzureClients(clientBuilder =>
 });
 
 var app = builder.Build();
+
+// Automatically apply migrations on startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 app.UseDefaultFiles();
 app.UseStaticFiles();

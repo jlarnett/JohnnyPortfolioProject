@@ -22,7 +22,7 @@ function ContactMePage() {
         const apiUrl = '/api/ContactRequests'
 
         if (environment == 'development') {
-            baseUrl = 'http:localhost:5001';
+            baseUrl = 'https://localhost:7009';
         }
 
         let finalUrl = baseUrl + apiUrl;
