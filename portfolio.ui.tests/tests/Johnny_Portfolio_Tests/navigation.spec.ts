@@ -17,7 +17,7 @@ test.describe('Portfolio - Navigation Tests', async () => {
     });
 
     test('Check Basic Navigation Functionality - Build Link', async ({ navigationBarMenu }) => {
-        await navigationBarMenu.navigationBarContainer.getByTestId('NavLink-GamesBuilds').click();
+        await navigationBarMenu.navigationBarContainer.getByTestId('NavLink-Deployments').click();
         expect(navigationBarMenu.page.url()).toContain('https://johnnyarnett.com/Builds');
     });
 
