@@ -9,11 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
-    "@types/node": "^22.10.1"
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.0"
   },
   "dependencies": {
-    "@axe-core/playwright": "^4.10.1",
+    "@axe-core/playwright": "^4.11.0",
     "jsonwebtoken": "^9.0.2"
   }
 }
