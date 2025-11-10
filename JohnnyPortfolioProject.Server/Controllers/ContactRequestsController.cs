@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JohnnyPortfolioProject.Server.Data;
 using JohnnyPortfolioProject.Server.Entities;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace JohnnyPortfolioProject.Server.Controllers
 {
@@ -15,10 +16,12 @@ namespace JohnnyPortfolioProject.Server.Controllers
     public class ContactRequestsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IEmailSender _emailSender;
 
-        public ContactRequestsController(AppDbContext context)
+        public ContactRequestsController(AppDbContext context, IEmailSender emailSender)
         {
             _context = context;
+            _emailSender = emailSender;
         }
 
         // GET: api/ContactRequests
@@ -79,9 +82,31 @@ namespace JohnnyPortfolioProject.Server.Controllers
         public async Task<ActionResult<ContactRequest>> PostContactRequest(ContactRequest contactRequest)
         {
             _context.ContactRequests.Add(contactRequest);
-            await _context.SaveChangesAsync();
+            var changes = await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetContactRequest", new { id = contactRequest.Id }, contactRequest);
+            if (changes > 0)
+            {
+                var emailSubjectLine = "";
+
+                switch (contactRequest.Urgency)
+                {
+                    case "Now (Today)":
+                        emailSubjectLine = $"EXTREMELY URGENT {contactRequest.Importance} REQUEST from {contactRequest.Name}";
+                        break;
+                    case "Urgent (1 Week)":
+                        emailSubjectLine = $"Semi-Urgent {contactRequest.Importance} request form {contactRequest.Name}";
+                        break;
+                    default:
+                        emailSubjectLine = $"{contactRequest.Importance} Contact Request from {contactRequest.Name}";
+                        break;
+                }
+
+                await _emailSender.SendEmailAsync("im10g@hotmail.com", emailSubjectLine, contactRequest.Message);
+                return CreatedAtAction("GetContactRequest", new { id = contactRequest.Id }, contactRequest);
+            }
+
+            return BadRequest();
+
         }
 
         // DELETE: api/ContactRequests/5

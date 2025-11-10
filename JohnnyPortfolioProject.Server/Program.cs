@@ -1,4 +1,6 @@
 using JohnnyPortfolioProject.Server.Data;
+using JohnnyPortfolioProject.Server.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
 
@@ -36,6 +38,8 @@ builder.Services.AddAzureClients(clientBuilder =>
     clientBuilder.AddQueueServiceClient(builder.Configuration["StorageConnection:queueServiceUri"]!).WithName("StorageConnection");
     clientBuilder.AddTableServiceClient(builder.Configuration["StorageConnection:tableServiceUri"]!).WithName("StorageConnection");
 });
+
+builder.Services.AddTransient<IEmailSender, MailGunSender>();
 
 var app = builder.Build();
 
