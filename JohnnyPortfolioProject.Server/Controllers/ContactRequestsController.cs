@@ -94,14 +94,17 @@ namespace JohnnyPortfolioProject.Server.Controllers
                         emailSubjectLine = $"EXTREMELY URGENT {contactRequest.Importance} REQUEST from {contactRequest.Name}";
                         break;
                     case "Urgent (1 Week)":
-                        emailSubjectLine = $"Semi-Urgent {contactRequest.Importance} request form {contactRequest.Name}";
+                        emailSubjectLine = $"Semi-Urgent {contactRequest.Importance} request from {contactRequest.Name}";
                         break;
                     default:
                         emailSubjectLine = $"{contactRequest.Importance} Contact Request from {contactRequest.Name}";
                         break;
                 }
 
-                await _emailSender.SendEmailAsync("im10g@hotmail.com", emailSubjectLine, contactRequest.Message);
+                var message = $"{contactRequest.Message} \n" +
+                              $"reply to {contactRequest.EmailAddress}";
+
+                await _emailSender.SendEmailAsync("im10g@hotmail.com", emailSubjectLine, message);
                 return CreatedAtAction("GetContactRequest", new { id = contactRequest.Id }, contactRequest);
             }
 
