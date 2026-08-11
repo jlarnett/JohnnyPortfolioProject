@@ -44,11 +44,11 @@ function ProjectShowcaseComponent() {
               </div>
          </div>
          <div className='flex justify-between ps-20 pe-20 border-t-1 mt-2'>
-             <div className='text-red-700 dark:text-red-400' data-testid='ProjectProgrammingLanguage'>
-                Primary Language -&gt; {project.language}
+            <div className='text-red-700 dark:text-red-400' data-testid='ProjectProgrammingLanguage'>
+                Primary Language &middot; {project.language}
             </div>
             <div className='text-red-700 dark:text-red-400' data-testid='ProjectUpdateAt'>
-                <span className='text-black-700 '>Updated</span> -&gt; {new Date(project.updated_at).toLocaleDateString()}
+                <span className='text-black-700 '>Last Updated</span> &middot; {new Date(project.updated_at).toLocaleDateString()}
             </div>
          </div>
 
